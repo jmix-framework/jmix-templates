@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '0.1.999-SNAPSHOT'
+    bomVersion = '@bomVersion@'
     projectId = '$project_id'
 }
 
