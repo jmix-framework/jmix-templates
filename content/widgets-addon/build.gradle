@@ -1,11 +1,12 @@
 plugins {
     id 'java'
     id 'java-library'
-    id 'maven'
+    id 'maven-publish'
 }
 
 group = 'com.company'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral() <%if (project_additionalRepositories) {
@@ -16,6 +17,15 @@ ${additionalRepository} <%}}%>
 dependencies {
     api 'io.jmix.ui:jmix-ui:@bomVersion@'
     compileOnly 'io.jmix.ui:jmix-ui-widgets:@bomVersion@'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = '${project_name}'
+            from components.java
+        }
+    }
 }
 
 jar {

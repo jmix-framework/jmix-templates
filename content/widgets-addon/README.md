@@ -7,7 +7,7 @@ Widgets add-on may provide UI components inherited from Vaadin components as wel
 * Build publish add-on to `.m2`:
 
 ```
-./gradlew clean assemble install
+./gradlew clean assemble publishToMavenLocal
 ```
 
 * Include add-on dependency to a project:
