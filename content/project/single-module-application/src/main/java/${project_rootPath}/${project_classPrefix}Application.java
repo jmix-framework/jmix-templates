@@ -1,7 +1,6 @@
 package ${project_rootPackage};
 
 import com.google.common.base.Strings;
-import io.jmix.core.CoreProperties;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -38,6 +37,6 @@ public class ${project_classPrefix}Application {
 		LoggerFactory.getLogger(${project_classPrefix}Application.class).info("Application started at "
 				+ "http://localhost:"
 				+ environment.getProperty("local.server.port")
-				+ Strings.nullToEmpty(environment.getProperty(CoreProperties.SERVER_SERVLET_CONTEXTPATH)));
+				+ Strings.nullToEmpty(environment.getProperty("server.servlet.context-path")));
 	}
 }
