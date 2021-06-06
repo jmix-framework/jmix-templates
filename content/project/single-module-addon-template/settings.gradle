@@ -1,0 +1,8 @@
+rootProject.name = '${project_name}'
+
+include '${project_id}'
+include '${project_id}-starter'
+
+rootProject.children.each { p1 ->
+    p1.buildFileName = "\${p1.name}.gradle"
+}
