@@ -1,4 +1,4 @@
-archivesBaseName = '${project_name.toLowerCase()}-starter'
+archivesBaseName = '${module_name}-starter'
 
 jmix {
     entitiesEnhancing {
@@ -7,7 +7,7 @@ jmix {
 }
 
 dependencies {
-    api project(':${project_id}')
+    api project(':${module_name}')
 
     implementation 'io.jmix.core:jmix-core'
     implementation 'io.jmix.data:jmix-data'

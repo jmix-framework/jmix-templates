@@ -1,4 +1,4 @@
-archivesBaseName = '${project_name.toLowerCase()}'
+archivesBaseName = '${module_name}'
 
 dependencies {
     implementation 'io.jmix.core:jmix-core-starter'
