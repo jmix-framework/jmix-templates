@@ -16,34 +16,34 @@ import org.springframework.beans.factory.annotation.Autowired
 open class MainScreen : Screen(), HasWorkArea {
 
     @Autowired
-    private var screenTools: ScreenTools? = null
+    private lateinit var screenTools: ScreenTools
 
     @Autowired
-    private var workArea: AppWorkArea? = null
+    private lateinit var workArea: AppWorkArea
 
     @Autowired
-    private var drawer: Drawer? = null
+    private lateinit var drawer: Drawer
 
     @Autowired
-    private var collapseDrawerButton: Button? = null
+    private lateinit var collapseDrawerButton: Button
 
-    override fun getWorkArea(): AppWorkArea? = workArea
+    override fun getWorkArea(): AppWorkArea = workArea
 
     @Subscribe("collapseDrawerButton")
     private fun onCollapseDrawerButtonClick(event: Button.ClickEvent) {
-        drawer?.run {
+        drawer.run {
             toggle()
             if (isCollapsed) {
-                collapseDrawerButton?.setIconFromSet(JmixIcon.CHEVRON_RIGHT)
+                collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_RIGHT)
             } else {
-                collapseDrawerButton?.setIconFromSet(JmixIcon.CHEVRON_LEFT)
+                collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_LEFT)
             }
         }
     }
 
     @Subscribe
     fun onAfterShow(event: AfterShowEvent?) {
-        screenTools?.run {
+        screenTools.run {
             openDefaultScreen(
                 UiControllerUtils.getScreenContext(this@MainScreen).screens
             )

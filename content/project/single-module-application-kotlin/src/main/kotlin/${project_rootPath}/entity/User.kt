@@ -50,19 +50,17 @@ open class User : JmixUserDetails {
     var active: Boolean? = true
 
     @Transient
-    @get:JvmName("getAuthorities_")
-    @set:JvmName("setAuthorities_")
-    protected var authorities: Collection<GrantedAuthority?>? = null
+    protected var userAuthorities: Collection<GrantedAuthority?>? = null
 
     override fun getPassword(): String? = password
 
     override fun getUsername(): String? = username
 
     override fun getAuthorities(): Collection<GrantedAuthority?> =
-        authorities ?: emptyList()
+        userAuthorities ?: emptyList()
 
     override fun setAuthorities(authorities: Collection<GrantedAuthority?>) {
-        this.authorities = authorities
+        this.userAuthorities = authorities
     }
 
     override fun isAccountNonExpired(): Boolean = true

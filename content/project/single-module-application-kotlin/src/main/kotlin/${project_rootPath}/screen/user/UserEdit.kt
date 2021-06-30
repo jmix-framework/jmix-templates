@@ -17,50 +17,50 @@ import org.springframework.security.crypto.password.PasswordEncoder
 open class UserEdit : StandardEditor<User>() {
 
     @Autowired
-    private var entityStates: EntityStates? = null
+    private lateinit var entityStates: EntityStates
 
     @Autowired
-    private var passwordEncoder: PasswordEncoder? = null
+    private lateinit var passwordEncoder: PasswordEncoder
 
     @Autowired
-    private var passwordField: PasswordField? = null
+    private lateinit var passwordField: PasswordField
 
     @Autowired
-    private var usernameField: TextField<String>? = null
+    private lateinit var usernameField: TextField<String>
 
     @Autowired
-    private var confirmPasswordField: PasswordField? = null
+    private lateinit var confirmPasswordField: PasswordField
 
     @Autowired
-    private var notifications: Notifications? = null
+    private lateinit var notifications: Notifications
 
     @Autowired
-    private var messageBundle: MessageBundle? = null
+    private lateinit var messageBundle: MessageBundle
 
     @Subscribe
     fun onInitEntity(event: InitEntityEvent<User>?) {
-        usernameField?.isEditable = true
-        passwordField?.isVisible = true
-        confirmPasswordField?.isVisible = true
+        usernameField.isEditable = true
+        passwordField.isVisible = true
+        confirmPasswordField.isVisible = true
     }
 
     @Subscribe
     fun onAfterShow(event: AfterShowEvent?) {
-        if (entityStates?.isNew(editedEntity) == true) {
-            usernameField?.focus()
+        if (entityStates.isNew(editedEntity)) {
+            usernameField.focus()
         }
     }
 
     @Subscribe
     protected fun onBeforeCommit(event: BeforeCommitChangesEvent) {
-        if (entityStates?.isNew(editedEntity) == true) {
-            if (passwordField?.value != confirmPasswordField?.value) {
-                notifications?.create(Notifications.NotificationType.WARNING)
-                    ?.withCaption(messageBundle?.getMessage("passwordsDoNotMatch") ?: "")
-                    ?.show()
+        if (entityStates.isNew(editedEntity)) {
+            if (passwordField.value != confirmPasswordField.value) {
+                notifications.create(Notifications.NotificationType.WARNING)
+                    .withCaption(messageBundle.getMessage("passwordsDoNotMatch") ?: "")
+                    .show()
                 event.preventCommit()
             }
-            editedEntity.password = passwordEncoder?.encode(passwordField?.value)
+            editedEntity.password = passwordEncoder.encode(passwordField.value)
         }
     }
 }

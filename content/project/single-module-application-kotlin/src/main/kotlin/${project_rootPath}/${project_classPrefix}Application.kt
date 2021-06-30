@@ -40,11 +40,8 @@ open class ${project_classPrefix}Application {
     @EventListener
     open fun printApplicationUrl(event: ApplicationStartedEvent?) {
         LoggerFactory.getLogger(${project_classPrefix}Application::class.java).info(
-            """Application started at http://localhost:
-                |\${environment?.getProperty("local.server.port") ?: ""}
-                |\${environment?.getProperty("server.servlet.context-path") ?: ""}"""
-                .trimMargin()
-                .replace("\\n", "")
-        )
+        "Application started at http://localhost:"
+        + (environment?.getProperty("local.server.port") ?: "")
+        + (environment?.getProperty("server.servlet.context-path") ?: ""))
     }
 }
