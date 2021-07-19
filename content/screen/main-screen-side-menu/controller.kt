@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 @UiController("${id}")
 @UiDescriptor("${descriptorName}.xml")
 @Route(path = "main", root = true)
-open class MainScreenSideMenu : Screen(), HasWorkArea {
+open class ${controllerName} : Screen(), HasWorkArea {
 
     @Autowired
     private lateinit var screenTools: ScreenTools
@@ -45,7 +45,7 @@ open class MainScreenSideMenu : Screen(), HasWorkArea {
     fun onAfterShow(event: AfterShowEvent?) {
         screenTools.run {
             openDefaultScreen(
-                UiControllerUtils.getScreenContext(this@MainScreenSideMenu).screens
+                UiControllerUtils.getScreenContext(this@${controllerName}).screens
             )
             handleRedirect()
         }

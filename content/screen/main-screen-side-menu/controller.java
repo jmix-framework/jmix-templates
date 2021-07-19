@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UiController("${id}")
 @UiDescriptor("${descriptorName}.xml")
 @Route(path = "main", root = true)
-public class MainScreenSideMenu extends Screen implements Window.HasWorkArea {
+public class ${controllerName} extends Screen implements Window.HasWorkArea {
 
     @Autowired
     private ScreenTools screenTools;
