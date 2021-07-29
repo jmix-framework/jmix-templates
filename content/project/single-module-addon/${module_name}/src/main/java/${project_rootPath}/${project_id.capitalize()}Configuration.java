@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.Collections;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"io.jmix.core.impl.scanning"})
 @ConfigurationPropertiesScan
 @JmixModule(dependsOn = {EclipselinkConfiguration.class, UiConfiguration.class})
 @PropertySource(name = "${project_rootPackage}", value = "classpath:/${project_rootPath}/module.properties")
