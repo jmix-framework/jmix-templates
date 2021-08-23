@@ -21,6 +21,6 @@ interface FullAccessRole {
     @ScreenPolicy(screenIds = ["*"])
     @MenuPolicy(menuIds = ["*"])
     @SpecificPolicy(resources = ["*"])
-    @GraphQLPolicy(operationNames = ["*"])
+    @GraphQLPolicy(operations = ["*"])
     fun fullAccess()
 }
