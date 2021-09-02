@@ -24,13 +24,11 @@ def formXml = api.processSnippet('screen/form.xml',
 def optionsDatasourceXml = api.processSnippet('screen/optionsDsSource.xml',
         ['view': editView,
         'api': api])
-def expandId = ""
+def expandId = "editActions"
 if (createModalVbox) {
-        expandId = "modalBox"
+    expandId = "formBox"
 } else if (createScrollBox) {
-        expandId = "scrollBox"
-} else {
-        expandId = "editActions"
+    expandId = "scrollBox"
 }
 %><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
@@ -84,7 +82,7 @@ if (createModalVbox) {
                 width="800"/><%}%>
 <layout spacing="true" expand="$expandId">
     <%if (createModalVbox) {
-        print('<vbox id="modalBox" spacing="true">')}
+        print('<vbox id="formBox" spacing="true">')}
     else if (createScrollBox) {
         print('<scrollBox id="scrollBox" spacing="true">')}%>
         ${formXml}
@@ -93,7 +91,7 @@ if (createModalVbox) {
         <%}%>
     <%if (createModalVbox) {
         print('</vbox>')}
-    else if (!createModalVbox && createScrollBox) {
+    else if (createScrollBox) {
         print('</scrollBox>')}%>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/><%if(extendedWindowActions) {%>

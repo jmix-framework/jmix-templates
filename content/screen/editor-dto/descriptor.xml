@@ -11,13 +11,11 @@ def formXml = api.processSnippet('screen/dto_form.xml',
         'columnWidth': fieldColumnWidth,
         'formId': 'form'])
 
-def expandId = ""
+def expandId = "editActions"
 if (createModalVbox) {
-    expandId = "modalBox"
+    expandId = "formBox"
 } else if (createScrollBox) {
     expandId = "scrollBox"
-} else {
-    expandId = "editActions"
 }
 
 %><?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -56,14 +54,14 @@ if (createModalVbox) {
                 width="800"/><%}%>
     <layout spacing="true" expand="$expandId">
         <%if (createModalVbox) {
-        print('<vbox id="modalBox" spacing="true">')}
+            print('<vbox id="formBox" spacing="true">')}
         else if (createScrollBox) {
-        print('<scrollBox id="scrollBox" spacing="true">')}%>
+            print('<scrollBox id="scrollBox" spacing="true">')}%>
         ${formXml}
         <%if (createModalVbox) {
-        print('</vbox>')}
-        else if (!createModalVbox && createScrollBox) {
-        print('</scrollBox>')}%>
+            print('</vbox>')}
+        else if (createScrollBox) {
+            print('</scrollBox>')}%>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/><%if(extendedWindowActions) {%>
             <button id="commitBtn" action="windowCommit"/><%}%>
