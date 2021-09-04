@@ -1,1 +1,1 @@
-<html>Template of single module <i>Jmix</i> application.</html>
+<html>Jmix web application in Java.<p>Contains UI, Security and File Storage subsystems.<br>Uses embedded HSQL database.<p>You can change the database and include add-ons from the Marketplace at any time when working on the project.</html>
