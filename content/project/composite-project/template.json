@@ -8,5 +8,6 @@
       "mandatory": false
     }
   ],
+  "hideForSubproject": true,
   "subFolder": "${project_name}-all"
 }
